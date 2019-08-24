@@ -5,7 +5,8 @@ namespace aaron_favorite_music_data
 {
     public interface IMusicAlbium 
     {
-        IEnumerable<MusicAlbum> GetAll();
+        IEnumerable<MusicAlbum> GetAlbumByName(string AlbumName);
+        MusicAlbum GetById(int Id);
 
     }
 

@@ -14,7 +14,7 @@ namespace aaron_favorite_music_data
                 new MusicAlbum {
                                     Id = 1, 
                                     AlbumName = "Hard Days Night",
-                                    Description = "Early Beatles",
+                                    Description = "One of the best early album",
                                     Artist = "Beatles",
                                     Genre = GenreType.rock,
                                     YearRelase = "1964"
@@ -22,7 +22,7 @@ namespace aaron_favorite_music_data
                 new MusicAlbum {
                                     Id = 2, 
                                     AlbumName = "Beatles for sale",
-                                    Description = "Early Beatles",
+                                    Description = "First U.S. album?",
                                     Artist = "Beatles",
                                     Genre = GenreType.rock,
                                     YearRelase = "1964"
@@ -30,19 +30,36 @@ namespace aaron_favorite_music_data
                 new MusicAlbum {
                                     Id = 3, 
                                     AlbumName = "Please please me",
-                                    Description = "Early Beatles",
+                                    Description = "Very first album",
                                     Artist = "Beatles",
                                     Genre = GenreType.rock,
                                     YearRelase = "1963"
+                               },   
+                new MusicAlbum {
+                                    Id = 4, 
+                                    AlbumName = "Help!",
+                                    Description = "Right after Hard days night",
+                                    Artist = "Beatles",
+                                    Genre = GenreType.rock,
+                                    YearRelase = "1965"
                                },                                                              
+
 
             };
         }
-        public IEnumerable<MusicAlbum> GetAll()
+        public IEnumerable<MusicAlbum> GetAlbumByName(string AlbumName = null)
         {
+            
             return from r in musicAlbums
+                    where string.IsNullOrEmpty(AlbumName) || r.AlbumName.StartsWith(AlbumName)
                     orderby r.AlbumName
                     select r;
+        }
+
+        public MusicAlbum GetById(int Id)
+        {
+            
+            return musicAlbums.SingleOrDefault(r => r.Id == Id);
         }
     }
 }

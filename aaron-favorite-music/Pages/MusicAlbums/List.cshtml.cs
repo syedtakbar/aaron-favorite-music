@@ -16,7 +16,8 @@ namespace aaron_favorite_music.Pages.MusicAlbums
         private readonly IMusicAlbium musicAlbum;
         public string Message { get; set; }
         public IEnumerable<MusicAlbum> MusicAlbums { get; set; }
-
+        [BindProperty(SupportsGet = true)]
+        public string SearchTerm { get; set; }
 
         public ListModel(IConfiguration config, IMusicAlbium musicAlbum)
         {
@@ -27,7 +28,7 @@ namespace aaron_favorite_music.Pages.MusicAlbums
         public void OnGet()
         {
             Message = config["Message"];
-            MusicAlbums = musicAlbum.GetAll();
+            MusicAlbums = musicAlbum.GetAlbumByName(SearchTerm);
         }
     }
 }

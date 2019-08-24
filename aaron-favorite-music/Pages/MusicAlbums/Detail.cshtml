@@ -1,0 +1,23 @@
+@page "{musicAlbumId:int}"
+@model aaron_favorite_music.Pages.MusicAlbums.DetailModel
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h2>@Model.MusicAlbum.AlbumName</h2>
+<div>
+    Id:@Model.MusicAlbum.Id
+<div>
+    Description:@Model.MusicAlbum.Description
+</div>
+<div>
+    Arist:@Model.MusicAlbum.Artist
+</div>
+<div>
+    Genre:@Model.MusicAlbum.Genre
+</div>
+<div>
+    YearRelase:@Model.MusicAlbum.YearRelase
+</div>
+
+<a asp-page="./List" class="btn btn-default">All Albums</a>
