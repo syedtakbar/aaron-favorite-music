@@ -1,0 +1,27 @@
+@page
+@model aaron_favorite_music.Pages.MusicAlbums.ListModel
+@{
+    ViewData["Title"] = "List";
+}
+
+<h2>List</h2>
+
+
+
+<table class="table">
+    @foreach (var musucAlbum in Model.MusicAlbums)
+    {
+        <tr>
+            <td>@musucAlbum.AlbumName</td>
+            <td>@musucAlbum.Description</td>
+            <td>@musucAlbum.Artist</td>
+            <td>@musucAlbum.Genre</td>
+            <td>@musucAlbum.YearRelase</td>
+        </tr>
+    }
+</table>
+
+
+
+
+<div>@Model.Message</div>

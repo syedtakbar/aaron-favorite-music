@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>aaron_favorite_music_data</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../aaron-favorite-music-domain/aaron-favorite-music-domain.csproj" />
+  </ItemGroup>
+
+</Project>
