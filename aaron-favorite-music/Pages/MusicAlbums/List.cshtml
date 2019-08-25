@@ -36,11 +36,15 @@
                     <i class="glyphicon glyphicon-zoom-in"></i>
                 </a>
             </td>
+           <td>
+                <a class="btn btn-lg" 
+                        asp-page="./Edit" 
+                        asp-route-musicAlbumId="@musucAlbum.Id">
+                    <i class="glyphicon glyphicon-edit"></i>
+                </a>
+            </td> 
         </tr>
     }
 </table>
-
-
-
 
 <div>@Model.Message</div>
