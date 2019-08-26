@@ -1,0 +1,33 @@
+@page  "{musicAlbumId:int}"
+@model aaron_favorite_music.Pages.MusicAlbums.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Editing @Model.MusicAlbum.AlbumName</h2>
+
+<form method="post"></form>
+
+<input type="hidden" asp-for="MusicAlbum.Id">
+<div class="form-group">
+    <label asp-for="MusicAlbum.AlbumName"></label>
+    <input asp-for="MusicAlbum.AlbumName" class="form-control">
+</div>
+<div class="form-group">
+    <label asp-for="MusicAlbum.Description"></label>
+    <input asp-for="MusicAlbum.Description" class="form-control">
+</div>
+<div class="form-group">
+    <label asp-for="MusicAlbum.Artist"></label>
+    <input asp-for="MusicAlbum.Artist" class="form-control">
+</div>
+<div class="form-group">
+    <label asp-for="MusicAlbum.Genre"></label>
+    <select class="form-control"  asp-for="MusicAlbum.Genre" asp-items="Model.Genres">        
+     </select>
+</div>
+<div class="form-group">
+    <label asp-for="MusicAlbum.YearRelase"></label>
+    <input asp-for="MusicAlbum.YearRelase" class="form-control">
+</div>
+<button type="submit" class="btn btn-primary">Save</button>
