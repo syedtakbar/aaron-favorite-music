@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using aaron_favorite_music_data;
+using Microsoft.EntityFrameworkCore;
 
 namespace aaron_favorite_music
 {
@@ -25,7 +26,13 @@ namespace aaron_favorite_music
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IMusicAlbium, InMemoryData>();
+            services.AddDbContextPool<MusicAlbumDbContext>(options => {
+                options.UseSqlServer(Configuration.GetConnectionString("FavoriteMusic"));
+            });
+
+
+            services.AddScoped<IMusicAlbium, SqlMusicAlbumData>();
+            //services.AddSingleton<IMusicAlbium, InMemoryData>();
 
             services.Configure<CookiePolicyOptions>(options =>
             {

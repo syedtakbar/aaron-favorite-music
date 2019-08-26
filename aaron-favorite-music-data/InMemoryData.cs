@@ -62,6 +62,12 @@ namespace aaron_favorite_music_data
             return musicAlbums.SingleOrDefault(r => r.Id == Id);
         }
 
+        public MusicAlbum AddAlbum (MusicAlbum newAlbum)
+        {
+            musicAlbums.Add(newAlbum);
+            newAlbum.Id = musicAlbums.Max(x => x.Id) + 1;
+            return newAlbum;
+        } 
         public MusicAlbum UpdateAlbum (MusicAlbum updatedAlbum)
         {
             //Console.WriteLine($"updating album id: {updatedAlbum.Id}");
@@ -76,9 +82,20 @@ namespace aaron_favorite_music_data
             return album;
         }
 
+
         public int Commit()
         {
             return 0;
+        }
+
+        public MusicAlbum Delete(int Id)
+        {
+            var album = musicAlbums.FirstOrDefault(x => x.Id == Id);
+            if (album != null)
+            {
+                musicAlbums.Remove(album);
+            }
+            return album;
         }
     }
 }

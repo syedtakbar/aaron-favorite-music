@@ -15,6 +15,7 @@ namespace aaron_favorite_music.Pages.MusicAlbums
         private readonly IMusicAlbium musicAlbumData;
         private readonly IHtmlHelper htmlHelper;
 
+
         [BindProperty]
         public MusicAlbum MusicAlbum { get; set; }
         public IEnumerable<SelectListItem>  Genres;  
@@ -23,10 +24,18 @@ namespace aaron_favorite_music.Pages.MusicAlbums
             this.musicAlbumData = MusicAlbumInt;
             htmlHelper = HtmlHelper;
         }
-        public IActionResult OnGet(int musicAlbumId)
+        public IActionResult OnGet(int? musicAlbumId)
         {
             Genres = htmlHelper.GetEnumSelectList<GenreType>();
-            MusicAlbum = this.musicAlbumData.GetById(musicAlbumId);
+            if (musicAlbumId.HasValue)
+            {
+                MusicAlbum = this.musicAlbumData.GetById(musicAlbumId.Value);               
+            }
+            else
+            {
+                MusicAlbum  = new MusicAlbum();
+            }
+
             if (MusicAlbum == null)
             {
                 return RedirectToPage("./NotFound");
@@ -41,7 +50,17 @@ namespace aaron_favorite_music.Pages.MusicAlbums
 
             if (ModelState.IsValid)
             {           
-                this.musicAlbumData.UpdateAlbum(MusicAlbum);            
+                if (MusicAlbum.Id > 0)
+                {
+                    TempData["Message"] = "Album Saved!";
+                    this.musicAlbumData.UpdateAlbum(MusicAlbum);
+                }
+                else
+                {
+                    TempData["Message"] = "Album Added!";
+                    this.musicAlbumData.AddAlbum(MusicAlbum);
+                }
+                                             
                 this.musicAlbumData.Commit();   
                 return RedirectToPage("./Detail", new {musicAlbumId = MusicAlbum.Id});             
             }

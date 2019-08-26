@@ -8,6 +8,8 @@ namespace aaron_favorite_music_data
         IEnumerable<MusicAlbum> GetAlbumByName(string AlbumName);
         MusicAlbum GetById(int Id);
         MusicAlbum UpdateAlbum(MusicAlbum updatedMusicAlbum);
+        MusicAlbum AddAlbum(MusicAlbum newMusicAlbum);
+        MusicAlbum Delete(int Id);
         int Commit();
 
     }

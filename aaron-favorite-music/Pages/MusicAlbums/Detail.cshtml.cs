@@ -12,6 +12,8 @@ namespace aaron_favorite_music.Pages.MusicAlbums
     public class DetailModel : PageModel
     {
 
+        [TempData]
+        public string Message { get; set; }
         public MusicAlbum MusicAlbum { get; set; }
         private readonly IMusicAlbium musicAlbum;
         public DetailModel(IMusicAlbium musicAlbum)
