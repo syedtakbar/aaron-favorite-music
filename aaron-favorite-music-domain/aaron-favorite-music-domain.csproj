@@ -5,4 +5,8 @@
     <RootNamespace>aaron_favorite_music_domain</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations" Version="2.1.0" />
+  </ItemGroup>
+
 </Project>

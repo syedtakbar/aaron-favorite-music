@@ -61,5 +61,24 @@ namespace aaron_favorite_music_data
             
             return musicAlbums.SingleOrDefault(r => r.Id == Id);
         }
+
+        public MusicAlbum UpdateAlbum (MusicAlbum updatedAlbum)
+        {
+            //Console.WriteLine($"updating album id: {updatedAlbum.Id}");
+            var album = musicAlbums.SingleOrDefault(x => x.Id == updatedAlbum.Id);
+            if (album != null)
+            {
+                album.AlbumName = updatedAlbum.AlbumName;
+                album.Description = updatedAlbum.Description;
+                album.YearRelase = updatedAlbum.YearRelase;
+                album.Genre = updatedAlbum.Genre;
+            }
+            return album;
+        }
+
+        public int Commit()
+        {
+            return 0;
+        }
     }
 }

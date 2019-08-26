@@ -12,24 +12,40 @@ namespace aaron_favorite_music.Pages.MusicAlbums
 {
     public class EditModel : PageModel
     {
-        private readonly IMusicAlbium musicAlbum;
+        private readonly IMusicAlbium musicAlbumData;
         private readonly IHtmlHelper htmlHelper;
 
+        [BindProperty]
         public MusicAlbum MusicAlbum { get; set; }
         public IEnumerable<SelectListItem>  Genres;  
-        public EditModel(IMusicAlbium MusicAlbum, IHtmlHelper HtmlHelper)
+        public EditModel(IMusicAlbium MusicAlbumInt, IHtmlHelper HtmlHelper)
         {
-            this.musicAlbum = MusicAlbum;
+            this.musicAlbumData = MusicAlbumInt;
             htmlHelper = HtmlHelper;
         }
         public IActionResult OnGet(int musicAlbumId)
         {
             Genres = htmlHelper.GetEnumSelectList<GenreType>();
-            MusicAlbum = this.musicAlbum.GetById(musicAlbumId);
+            MusicAlbum = this.musicAlbumData.GetById(musicAlbumId);
             if (MusicAlbum == null)
             {
                 return RedirectToPage("./NotFound");
             }
+            return Page();
+        }
+
+        public IActionResult OnPost()
+        {
+            //Console.WriteLine("OnPost executed!!!");
+            Genres = htmlHelper.GetEnumSelectList<GenreType>();
+
+            if (ModelState.IsValid)
+            {           
+                this.musicAlbumData.UpdateAlbum(MusicAlbum);            
+                this.musicAlbumData.Commit();   
+                return RedirectToPage("./Detail", new {musicAlbumId = MusicAlbum.Id});             
+            }
+
             return Page();
         }
     }

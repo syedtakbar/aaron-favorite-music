@@ -6,28 +6,35 @@
 
 <h2>Editing @Model.MusicAlbum.AlbumName</h2>
 
-<form method="post"></form>
+<form method="post">
 
 <input type="hidden" asp-for="MusicAlbum.Id">
 <div class="form-group">
     <label asp-for="MusicAlbum.AlbumName"></label>
     <input asp-for="MusicAlbum.AlbumName" class="form-control">
+    <span class="text-danger" asp-validation-for="MusicAlbum.AlbumName"></span>
 </div>
 <div class="form-group">
     <label asp-for="MusicAlbum.Description"></label>
     <input asp-for="MusicAlbum.Description" class="form-control">
+    <span class="text-danger" asp-validation-for="MusicAlbum.Description"></span>
 </div>
 <div class="form-group">
     <label asp-for="MusicAlbum.Artist"></label>
     <input asp-for="MusicAlbum.Artist" class="form-control">
+    <span class="text-danger" asp-validation-for="MusicAlbum.Artist"></span>
 </div>
 <div class="form-group">
     <label asp-for="MusicAlbum.Genre"></label>
-    <select class="form-control"  asp-for="MusicAlbum.Genre" asp-items="Model.Genres">        
+    <select class="form-control"  asp-for="MusicAlbum.Genre" asp-items="Model.Genres">                
      </select>
+     <span class="text-danger" asp-validation-for="MusicAlbum.Genre"></span>
 </div>
 <div class="form-group">
     <label asp-for="MusicAlbum.YearRelase"></label>
     <input asp-for="MusicAlbum.YearRelase" class="form-control">
+    <span class="text-danger" asp-validation-for="MusicAlbum.YearRelase"></span>
 </div>
+
 <button type="submit" class="btn btn-primary">Save</button>
+</form>
