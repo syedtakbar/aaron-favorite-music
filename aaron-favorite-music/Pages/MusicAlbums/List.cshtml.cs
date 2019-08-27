@@ -14,6 +14,9 @@ namespace aaron_favorite_music.Pages.MusicAlbums
     {
         private readonly IConfiguration config;
         private readonly IMusicAlbium musicAlbum;
+        public string ConfigMessage { get; set; }
+
+        [TempData]
         public string Message { get; set; }
         public IEnumerable<MusicAlbum> MusicAlbums { get; set; }
         
@@ -28,7 +31,7 @@ namespace aaron_favorite_music.Pages.MusicAlbums
 
         public void OnGet()
         {
-            Message = config["Message"];
+            ConfigMessage = config["Message"];
             MusicAlbums = musicAlbum.GetAlbumByName(SearchTerm);
         }
     }
