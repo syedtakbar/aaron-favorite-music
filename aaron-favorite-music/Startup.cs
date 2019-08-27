@@ -31,8 +31,8 @@ namespace aaron_favorite_music
             });
 
 
-            services.AddScoped<IMusicAlbium, SqlMusicAlbumData>();
-            //services.AddSingleton<IMusicAlbium, InMemoryData>();
+            services.AddScoped<IMusicAlbum, SqlMusicAlbumData>();
+            //services.AddSingleton<IMusicAlbum, InMemoryData>();
 
             services.Configure<CookiePolicyOptions>(options =>
             {

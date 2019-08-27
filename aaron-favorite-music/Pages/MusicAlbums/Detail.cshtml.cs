@@ -15,8 +15,8 @@ namespace aaron_favorite_music.Pages.MusicAlbums
         [TempData]
         public string Message { get; set; }
         public MusicAlbum MusicAlbum { get; set; }
-        private readonly IMusicAlbium musicAlbum;
-        public DetailModel(IMusicAlbium musicAlbum)
+        private readonly IMusicAlbum musicAlbum;
+        public DetailModel(IMusicAlbum musicAlbum)
         {
             this.musicAlbum = musicAlbum;
         }

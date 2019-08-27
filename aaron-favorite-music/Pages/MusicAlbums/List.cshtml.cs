@@ -13,7 +13,7 @@ namespace aaron_favorite_music.Pages.MusicAlbums
     public class ListModel : PageModel
     {
         private readonly IConfiguration config;
-        private readonly IMusicAlbium musicAlbum;
+        private readonly IMusicAlbum musicAlbum;
         public string ConfigMessage { get; set; }
 
         [TempData]
@@ -23,7 +23,7 @@ namespace aaron_favorite_music.Pages.MusicAlbums
         [BindProperty(SupportsGet = true)]
         public string SearchTerm { get; set; }
 
-        public ListModel(IConfiguration config, IMusicAlbium musicAlbum)
+        public ListModel(IConfiguration config, IMusicAlbum musicAlbum)
         {
             this.musicAlbum = musicAlbum;
             this.config = config;

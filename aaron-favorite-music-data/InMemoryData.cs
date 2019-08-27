@@ -4,7 +4,7 @@ using System.Linq;
 using aaron_favorite_music_domain;
 namespace aaron_favorite_music_data
 {
-    public class InMemoryData : IMusicAlbium
+    public class InMemoryData : IMusicAlbum
     {
         readonly List<MusicAlbum> musicAlbums;
         public InMemoryData()
@@ -96,6 +96,11 @@ namespace aaron_favorite_music_data
                 musicAlbums.Remove(album);
             }
             return album;
+        }
+
+        public int GetCountOfMusicAlbums()
+        {
+            return musicAlbums.Count();;
         }
     }
 }

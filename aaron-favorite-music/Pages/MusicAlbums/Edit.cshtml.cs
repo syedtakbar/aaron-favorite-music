@@ -12,14 +12,14 @@ namespace aaron_favorite_music.Pages.MusicAlbums
 {
     public class EditModel : PageModel
     {
-        private readonly IMusicAlbium musicAlbumData;
+        private readonly IMusicAlbum musicAlbumData;
         private readonly IHtmlHelper htmlHelper;
 
 
         [BindProperty]
         public MusicAlbum MusicAlbum { get; set; }
         public IEnumerable<SelectListItem>  Genres;  
-        public EditModel(IMusicAlbium MusicAlbumInt, IHtmlHelper HtmlHelper)
+        public EditModel(IMusicAlbum MusicAlbumInt, IHtmlHelper HtmlHelper)
         {
             this.musicAlbumData = MusicAlbumInt;
             htmlHelper = HtmlHelper;

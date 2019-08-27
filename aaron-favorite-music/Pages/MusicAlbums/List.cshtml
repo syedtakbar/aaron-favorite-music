@@ -1,7 +1,7 @@
 @page
 @model aaron_favorite_music.Pages.MusicAlbums.ListModel
 @{
-    ViewData["Title"] = "List";
+    ViewData["Title"] = "Music Album";
 }
 
 @if (Model.Message != null)
@@ -28,37 +28,6 @@
 {
     <partial name="_Summary" Model="musicAlbum"/>
 }
-
-
-<!-- <table class="table">
-    @foreach (var musucAlbum in Model.MusicAlbums)
-    {
-        <tr>
-            <td>@musucAlbum.AlbumName</td>
-            <td>@musucAlbum.Description</td>
-            <td>@musucAlbum.Artist</td>
-            <td>@musucAlbum.Genre</td>
-            <td>@musucAlbum.YearRelase</td>
-            <td>
-                <a class="btn btn-lg" 
-                        asp-page="./Detail" 
-                        asp-route-musicAlbumId="@musucAlbum.Id">
-                    <i class="glyphicon glyphicon-zoom-in"></i>
-                </a>
-                <a class="btn btn-lg" 
-                        asp-page="./Edit" 
-                        asp-route-musicAlbumId="@musucAlbum.Id">
-                    <i class="glyphicon glyphicon-edit"></i>
-                </a>
-                <a class="btn btn-lg" 
-                        asp-page="./Delete" 
-                        asp-route-musicAlbumId="@musucAlbum.Id">
-                    <i class="glyphicon glyphicon-trash"></i>
-                </a>
-            </td>             
-        </tr>
-    }
-</table> -->
 
 <a asp-page="./Edit" class="btn btn-primary">Add New</a>
 

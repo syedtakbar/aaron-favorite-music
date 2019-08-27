@@ -5,7 +5,7 @@ using aaron_favorite_music_domain;
 
 namespace aaron_favorite_music_data
 {
-    public class SqlMusicAlbumData : IMusicAlbium
+    public class SqlMusicAlbumData : IMusicAlbum
     {
         private readonly MusicAlbumDbContext db;
 
@@ -46,6 +46,11 @@ namespace aaron_favorite_music_data
         public MusicAlbum GetById(int Id)
         {
             return db.MusicAlbums.Find(Id);
+        }
+
+        public int GetCountOfMusicAlbums()
+        {
+            return db.MusicAlbums.Count();
         }
 
         public MusicAlbum UpdateAlbum(MusicAlbum updatedMusicAlbum)

@@ -13,9 +13,9 @@ namespace aaron_favorite_music.Pages.MusicAlbums
     {
 
         public MusicAlbum MusicAlbum { get; set; }
-        private readonly IMusicAlbium musicAlbum;
+        private readonly IMusicAlbum musicAlbum;
 
-        public DeleteModel(IMusicAlbium musicAlbumData)
+        public DeleteModel(IMusicAlbum musicAlbumData)
         {
             this.musicAlbum = musicAlbumData;
         }
