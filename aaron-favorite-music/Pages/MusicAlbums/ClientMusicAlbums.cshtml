@@ -1,0 +1,23 @@
+@page
+@model aaron_favorite_music.Pages.MusicAlbums.ClientMusicAlbumsModel
+@{
+    ViewData["Title"] = "ClientMusicAlbums";
+}
+
+<h2>Client Music Albums</h2>
+
+@section Scripts {
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css"/> 
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>
+    <script> 
+        $(function() {
+            $.ajax("/api/MusicAlbums", 
+                {method:"get"})
+                .then(function(response){
+                    console.dir(response);
+                });
+        });
+        
+    </script>
+
+}
