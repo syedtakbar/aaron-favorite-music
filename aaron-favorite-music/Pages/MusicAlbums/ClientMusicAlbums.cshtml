@@ -6,15 +6,34 @@
 
 <h2>Client Music Albums</h2>
 
+<table class="table" id="MusicAlbums"></table>
 @section Scripts {
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css"/> 
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>
+
+    <environment include="Development">
+        <script src="~/node_modules/datatables.net/js/jquery.dataTables.js"></script>
+        <script src="~/node_modules/datatables.net-bs/js/dataTables.bootstrap.js"></script>
+        <link rel="stylesheet" href="~/node_modules/datatables.net-bs/css/dataTables.bootstrap.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css"/> 
+        <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>
+    </environment>
     <script> 
         $(function() {
             $.ajax("/api/MusicAlbums", 
                 {method:"get"})
                 .then(function(response){
                     console.dir(response);
+                    $(#dataTables.bootstrap).dataTables({
+                        data: response,
+                        columns: [
+                            {data: "AlbumName"},
+                            {data: "Description"},
+                            {data: "Artist"},
+                            {data: "YearRelease"},
+                            {data: "Genre"}
+                        ]
+                    });
                 });
         });
         

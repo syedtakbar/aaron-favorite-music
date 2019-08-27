@@ -62,6 +62,18 @@ namespace aaron_favorite_music
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            app.Use ( (ctx ,next) => 
+            {               
+                if (ctx.Request.Path.StartsWithSegments("/hello-Aaron"))
+                {
+                    return ctx.Response.WriteAsync("Hi from middleware!!");      
+                } 
+                else
+                {
+                    return next();   
+                }
+            } );
+
             app.UseMvc();
         }
     }
